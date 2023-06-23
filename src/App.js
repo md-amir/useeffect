@@ -1,24 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState,useEffect } from "react";
 
 function App() {
+
+  const [resoursType, setResoursType] = useState('Users')
+  console.log('Component render');
+
+  useEffect(() => {
+    console.log('inside useEffect');
+  
+    return () => {
+      console.log('clear useeffect');
+    }
+  },[resoursType])
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <button onClick={()=>setResoursType('Users')}>Users</button>
+    <button onClick={()=>setResoursType('Post')}>Post</button>
+    <button onClick={()=>setResoursType('Comments')}>Comments</button>
+    <h1>{resoursType}</h1>
+    </>
   );
 }
 
